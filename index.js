@@ -1,7 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
+
+app.use(cors({
+    origin: "https://ecommerceapp-zeta-ten.vercel.app"
+}));
 
 app.use(express.json());
 app.use(express.static("public"));
