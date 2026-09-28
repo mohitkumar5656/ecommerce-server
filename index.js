@@ -43,6 +43,9 @@ app.use("/api/testimonial", testimonialRoute);
 const settingRoute = require("./routes/Setting");
 app.use("/api/setting", settingRoute);
 
+const faqRoute = require("./routes/Faq");
+app.use("/api/faq", faqRoute);
+
 
 app.get("/", (req, res) => {
     res.send("Backend Server is Running");
