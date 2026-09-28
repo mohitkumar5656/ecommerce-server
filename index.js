@@ -4,10 +4,15 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors({
-    origin: "https://ecommerceapp-j002chl11-mohit-1b85.vercel.app"
-}));
+const allowedOrigins = [
+    "https://ecommerceapp-zeta-ten.vercel.app",
+    "https://ecommerceapp-j002chl11-mohit-1b85.vercel.app",
+    "https://ecommerceapp-git-main-mohit-1b85.vercel.app"
+];
 
+app.use(cors({
+    origin: allowedOrigins
+}));
 app.use(express.json());
 app.use(express.static("public"));
 
