@@ -35,6 +35,9 @@ const testimonialRoute = require("./routes/Testimonial");
 app.use("/api/testimonial", testimonialRoute);
 
 
+const settingRoute = require("./routes/Setting");
+app.use("/api/setting", settingRoute);
+
 
 app.get("/", (req, res) => {
     res.send("Backend Server is Running");
