@@ -31,6 +31,11 @@ app.use("/api/feature", featureRoute);
 const newsletterRoute = require("./routes/Newsletter");
 app.use("/api/newsletter", newsletterRoute);
 
+const testimonialRoute = require("./routes/Testimonial");
+app.use("/api/testimonial", testimonialRoute);
+
+
+
 app.get("/", (req, res) => {
     res.send("Backend Server is Running");
 });
