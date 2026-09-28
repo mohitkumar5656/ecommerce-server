@@ -28,6 +28,9 @@ app.use("/api/product", productRoute);
 const featureRoute = require("./routes/Feature");
 app.use("/api/feature", featureRoute);
 
+const newsletterRoute = require("./routes/Newsletter");
+app.use("/api/newsletter", newsletterRoute);
+
 app.get("/", (req, res) => {
     res.send("Backend Server is Running");
 });
