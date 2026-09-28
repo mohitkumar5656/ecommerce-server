@@ -25,6 +25,9 @@ app.use("/api/brand", brandRoute);
 const productRoute = require("./routes/Product");
 app.use("/api/product", productRoute);
 
+const featureRoute = require("./routes/Feature");
+app.use("/api/feature", featureRoute);
+
 app.get("/", (req, res) => {
     res.send("Backend Server is Running");
 });
