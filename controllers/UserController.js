@@ -1,9 +1,10 @@
-const Maincategory = require("../models/Maincategory");
+const User = require("../models/User");
 
-// Get all maincategories
-const getMaincategory = async (req, res) => {
+
+// Get all users
+const getUser = async (req, res) => {
     try {
-        const data = await Maincategory.find();
+        const data = await User.find();
 
         res.json({
             success: true,
@@ -18,10 +19,10 @@ const getMaincategory = async (req, res) => {
 };
 
 
-// Create maincategory
-const createMaincategory = async (req, res) => {
+// Create user
+const createUser = async (req, res) => {
     try {
-        const data = await Maincategory.create(req.body);
+        const data = await User.create(req.body);
 
         res.status(201).json({
             success: true,
@@ -36,10 +37,10 @@ const createMaincategory = async (req, res) => {
 };
 
 
-// Update maincategory
-const updateMaincategory = async (req, res) => {
+// Update user
+const updateUser = async (req, res) => {
     try {
-        const data = await Maincategory.findByIdAndUpdate(
+        const data = await User.findByIdAndUpdate(
             req.params.id,
             req.body,
             {
@@ -51,7 +52,7 @@ const updateMaincategory = async (req, res) => {
         if (!data) {
             return res.status(404).json({
                 success: false,
-                message: "Maincategory not found"
+                message: "User not found"
             });
         }
 
@@ -68,17 +69,17 @@ const updateMaincategory = async (req, res) => {
 };
 
 
-// Delete maincategory
-const deleteMaincategory = async (req, res) => {
+// Delete user
+const deleteUser = async (req, res) => {
     try {
-        const data = await Maincategory.findByIdAndDelete(
+        const data = await User.findByIdAndDelete(
             req.params.id
         );
 
         if (!data) {
             return res.status(404).json({
                 success: false,
-                message: "Maincategory not found"
+                message: "User not found"
             });
         }
 
@@ -96,8 +97,8 @@ const deleteMaincategory = async (req, res) => {
 
 
 module.exports = {
-    getMaincategory,
-    createMaincategory,
-    updateMaincategory,
-    deleteMaincategory
+    getUser,
+    createUser,
+    updateUser,
+    deleteUser
 };

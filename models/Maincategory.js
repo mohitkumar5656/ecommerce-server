@@ -1,23 +1,26 @@
-const mongoose = require("mongoose")
-const { type } = require("node:os")
+const mongoose = require("mongoose");
 
 const MaincategorySchema = new mongoose.Schema({
-    name:{
-        type:String,
-        unique:true,
-        required:[true,"Maincategory Name is Required"]
+    name: {
+        type: String,
+        unique: true,
+        required: [true, "Maincategory Name is Required"]
     },
+
     pic: {
-        type : String,
-         required:[true,"Maincategory Pic is Required"]
-
+        type: String,
+        required: [true, "Maincategory Pic is Required"]
     },
-    status:{
-        type : Boolean,
-        default : true
+
+    status: {
+        type: Boolean,
+        default: true
     }
-})
+});
 
-const Maincategory = mongoose.model("Maincategory",MaincategorySchema)
+const Maincategory = mongoose.model(
+    "Maincategory",
+    MaincategorySchema
+);
 
-module.exports = Maincategory
+module.exports = Maincategory;

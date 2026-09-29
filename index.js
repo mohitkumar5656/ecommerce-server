@@ -59,6 +59,10 @@ app.use("/api/setting", settingRoute);
 const faqRoute = require("./routes/Faq");
 app.use("/api/faq", faqRoute);
 
+const userRoute = require("./routes/User");
+
+app.use("/api/user", userRoute);
+
 app.get("/", (req, res) => {
     res.send("Backend Server is Running");
 });
