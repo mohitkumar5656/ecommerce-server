@@ -57,9 +57,9 @@ const ProductSchema = new mongoose.Schema({
     },
 
     description: {
-    type: String,
-    default: ""
-},
+        type: String,
+        default: ""
+    },
 
     pic: {
         type: [String],
@@ -72,6 +72,10 @@ const ProductSchema = new mongoose.Schema({
     }
 });
 
-const Product = mongoose.model("Product", ProductSchema);
+const Product = mongoose.model(
+    "Product",
+    ProductSchema,
+    "products"
+);
 
 module.exports = Product;
