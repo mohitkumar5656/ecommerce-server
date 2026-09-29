@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+const connectDB = require("./db-connect");
+
 const app = express();
 
 const allowedOrigins = [
@@ -13,10 +15,22 @@ const allowedOrigins = [
 app.use(cors({
     origin: allowedOrigins
 }));
+
 app.use(express.json());
 app.use(express.static("public"));
 
-require("./db-connect");
+// Database connection only for API requests
+app.use("/api", async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Database Connection Failed"
+        });
+    }
+});
 
 const maincategoryRoute = require("./routes/Maincategory");
 app.use("/api/maincategory", maincategoryRoute);
@@ -39,13 +53,11 @@ app.use("/api/newsletter", newsletterRoute);
 const testimonialRoute = require("./routes/Testimonial");
 app.use("/api/testimonial", testimonialRoute);
 
-
 const settingRoute = require("./routes/Setting");
 app.use("/api/setting", settingRoute);
 
 const faqRoute = require("./routes/Faq");
 app.use("/api/faq", faqRoute);
-
 
 app.get("/", (req, res) => {
     res.send("Backend Server is Running");

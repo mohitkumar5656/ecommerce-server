@@ -1,10 +1,21 @@
 const mongoose = require("mongoose");
 
-mongoose
-    .connect(process.env.DB_KEY)
-    .then(() => {
+let isConnected = false;
+
+const connectDB = async () => {
+    if (isConnected && mongoose.connection.readyState === 1) {
+        return;
+    }
+
+    try {
+        await mongoose.connect(process.env.DB_KEY);
+        isConnected = true;
         console.log("Database is Connected");
-    })
-    .catch((error) => {
+    } catch (error) {
+        isConnected = false;
         console.log("Database Connection Error:", error);
-    });
+        throw error;
+    }
+};
+
+module.exports = connectDB;
